@@ -1,0 +1,1559 @@
+/* ======================= */
+/*  Wordflow Setting Tabs  */
+/* ======================= */
+
+.wordflow-setting-tab {
+    height: 100%;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    box-shadow: none;
+}
+
+.wordflow-tab-bar.tab-labels-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid var(--background-modifier-border);
+    padding: 0;  /* 减少上下内边距 */
+    margin-bottom: 1.2rem;  /* 减少下边距 */
+    flex-wrap: wrap;
+    gap: 3px;  /* 使用动态间隙将标签和分隔符隔开 */
+}
+
+.wordflow-tab {
+    font-size: large;
+    padding: 6px 12px; /* 减小内边距 */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.15s ease; /* 更平滑过渡 */
+    color: var(--text-muted);
+    position: relative; /* 为下划线做准备 */
+}
+
+.wordflow-tab.active {
+    color: var(--text-accent);
+    font-weight: 600;
+    /* 移除背景颜色 */
+}
+
+.wordflow-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;  /* 缩短下划线与文字距离 */
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--interactive-accent);
+    transition: bottom 0.15s ease; /* 添加下划线位置动画 */
+}
+
+.wordflow-setting-tab-separator {
+    padding: 0 2px; /* 减少分隔符间距 */
+    color: var(--text-faint);
+    user-select: none;
+    opacity: 0.6; /* 使分隔符更轻盈 */
+}
+
+.wordflow-tab-content {
+    min-height: 500px; 
+}
+
+.wordflow-tab-content-scroll {
+    overflow-y: auto;
+    padding: 0 4px; /* 减少内边距 */
+}
+
+.wordflow-setting-previewText { /* for setting descriptions that have dynamic values according to user input */
+    color: var(--text-accent); 
+    font-weight: bold;  
+}
+
+/* ======================= */
+/*  Recorders Setting Tab  */
+/* ======================= */
+
+.recorder-selection-container,
+.recorder-actions-container {
+    margin-bottom: 16px;
+}
+/*
+.settings-separator {
+    margin: 11.25px 0;
+}*/
+
+.setting-item.recorder-settings-heading {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.setting-item.recorder-settings-heading .setting-item-name {
+    font-size: large;
+    color: var(--text-accent);
+    /*color: rgb(67, 132, 216);*/
+}
+
+.wordflow-recorder-templatePlugin-container .setting-item {
+    border-top: 1px solid var(--background-modifier-border);
+    padding-top: 12px;
+}
+
+.wordflow-recorder-custom-position-container .setting-item {
+    border-top: none;
+    padding-top: 0;
+}
+
+.wordflow-recorder-custom-position-container .setting-item:first-child {
+    border-top: 1px solid var(--background-modifier-border);
+    padding-top: 12px;
+}
+
+
+.wordflow-recorder-sortby-container .setting-item:first-child {
+    border-top: 1px solid var(--background-modifier-border);
+    padding-top: 12px;
+}
+
+.wordflow-recorder-mtime-format-container .setting-item:first-child {
+    border-top: 1px solid var(--background-modifier-border);
+    padding-top: 12px;
+}
+
+/* Syntax preview container */
+.wordflow-syntax-preview-container {
+    margin-top: 12px;
+    margin-bottom: 16px;
+}
+
+.wordflow-syntax-preview-label {
+    font-size: 12px;
+    color: var(--text-accent); 
+    font-weight: bold;  
+    margin-bottom: 8px;
+}
+
+.wordflow-syntax-preview-content {
+    overflow-x: auto;
+}
+
+.wordflow-syntax-preview-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wordflow-syntax-preview-content th,
+.wordflow-syntax-preview-content td {
+    padding: 6px 8px;
+    border: 1px solid var(--background-modifier-border);
+    text-align: left;
+}
+
+.wordflow-syntax-preview-content ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.wordflow-syntax-preview-content pre {
+    margin: 0;
+    padding: 8px;
+    background-color: var(--code-background);
+    border-radius: 4px;
+}
+
+.wordflow-syntax-preview-content code {
+    font-family: var(--font-monospace);
+    color: var(--code-normal);
+}
+
+/* Fix icon alignment in metadata properties preview */
+.recorder-settings-container .metadata-property {
+    line-height: 30px;
+}
+
+.recorder-settings-container .metadata-property-icon {
+    margin-right: 8px;
+}
+
+.recorder-settings-container .metadata-property-icon svg {
+    display: block;
+}
+
+.recorder-settings-container .metadata-property-key, 
+.recorder-settings-container .metadata-property-value {
+    vertical-align: middle;
+}
+
+.recorder-settings-container .metadata-properties-heading {
+    line-height: 1;
+}
+
+.recorder-settings-container .metadata-properties-heading h4 {
+    margin: 0;
+    line-height: 1;
+}
+
+/* ======================== */
+/*  Status Bar Setting Tab  */
+/* ======================== */
+
+/* 修复 WordFlow 等插件容器的透明度 */
+.wordflow-status-bar-container {
+    background: transparent;
+    border: none;
+}
+
+/* Valid only if enableMobileStatusBar in settings */
+.wordflow-status-bar-container :is(.is-mobile .app-container .status-bar) {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    margin-left: auto; /* control left background */
+    width:auto; /* control left background */
+}
+
+/* 修复移动端 tag colors 设置中 color picker 被拉伸的问题 */
+.is-mobile .wordflow-widget-tag-colors-container .setting-item-control input[type="color"] {
+    flex-shrink: 0;
+    width: auto;
+    min-width: auto;
+}
+
+/* ======================== */
+/*  Widget Setting Tab  */
+/* ======================== */
+
+/* Field Alias 设置 - 保持正常宽度，只隐藏标题 */
+.wordflow-widget-mappings-container .setting-item .setting-item-info {
+    display: none; /* 隐藏名称和描述部分 */
+}
+
+.wordflow-widget-mappings-container .setting-item .setting-item-control .dropdown {
+    flex: 1;
+    min-width: 120px;
+}
+
+.wordflow-widget-mappings-container .setting-item .setting-item-control input[type="text"] {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* Tag Colors 设置 - 让文本框占用最大可用宽度 */
+.wordflow-widget-tag-colors-container .setting-item {
+    width: 100%;
+}
+
+.wordflow-widget-tag-colors-container .setting-item .setting-item-info {
+    display: none; /* 隐藏名称和描述部分 */
+}
+
+.wordflow-widget-tag-colors-container .setting-item .setting-item-control {
+    max-width: none;
+    margin-left: 0; /* 移除左边距，让控制区域占满宽度 */
+}
+
+.wordflow-widget-tag-colors-container .setting-item .setting-item-control input[type="text"] {
+    flex: 1;
+    min-width: 20px;
+    position: relative;
+}
+
+.wordflow-widget-tag-colors-container .setting-item .setting-item-control input[type="color"] {
+    width: 27px;
+    border-radius: 50%;
+}
+
+.wordflow-widget-tag-colors-container .setting-item-control button {
+    flex-shrink: 0;        /* 防止被压缩 */
+    max-width: 42px;     /* 最大宽度限制 */
+    padding: 4px 12px;      /* 设置合理的内边距 */
+}
+
+/* 内联标签输入样式 - 类似 Obsidian properties */
+.tag-input-field {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+.tag-input-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 8px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    background-color: var(--background-primary);
+    min-height: 32px;
+    cursor: text;
+}
+
+.tag-input-wrapper:focus-within {
+    border-color: var(--interactive-accent);
+    box-shadow: 0 0 0 2px rgba(var(--interactive-accent-rgb), 0.2);
+}
+
+.inline-tag-item {
+    display: inline-flex;
+    overflow: auto;
+    align-items: center;
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 12px;
+    gap: 4px;
+    flex-shrink: initial;
+    scrollbar-width: none;
+}
+
+.inline-tag-item::-webkit-scrollbar {
+    display: none;
+}
+
+.inline-tag-text {
+    white-space: nowrap;
+}
+
+.wordflow-widget-tag-colors-container button.inline-tag-remove-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    background-color: var(--interactive-normal);
+    cursor: pointer;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    padding: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.inline-tag-remove-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.wordflow-widget-tag-colors-container .setting-item .setting-item-control input.tag-inline-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    flex: 1;
+    min-width: 60px;
+    padding: 2px 0;
+    color: var(--text-normal);
+    font-size: 14px;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+    position: static;
+}
+
+.wordflow-widget-tag-colors-container .setting-item .setting-item-control input.tag-inline-input:focus,
+.wordflow-widget-tag-colors-container .setting-item .setting-item-control input.tag-inline-input:active,
+.wordflow-widget-tag-colors-container .setting-item .setting-item-control input.tag-inline-input:focus-visible {
+    box-shadow: none;
+}
+
+.tag-inline-input::placeholder {
+    color: var(--text-muted);
+}
+
+.tag-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 2px;
+}
+
+.tag-suggestion-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.tag-suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.tag-suggestion-item:hover {
+    background-color: var(--background-modifier-hover);
+}
+
+/* 移除旧的样式 */
+.tag-input-container,
+.tags-display,
+.tag-item,
+.tag-text,
+.tag-remove-btn {
+    display: none;
+}
+
+.wordflow-widget-current-note-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    font-size: 18px;
+    min-width: 0; /* Allow container to shrink */
+}
+
+.wordflow-widget-current-note-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+    flex-grow: 1;
+    min-width: 0; /* Allow content to shrink */
+}
+
+.wordflow-widget-current-note-left-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0; /* Allow content to shrink */
+    margin-right: 8px; /* Space between content and buttons */
+    overflow: hidden; /* Prevent content from overflowing */
+}
+
+.wordflow-widget-current-note-text-container {
+    display: flex;
+    align-items: baseline; /* Align text baselines */
+    margin-bottom: 0px; /* Space between text and progress bar */
+    min-width: 0; /* Allow text container to shrink */
+    
+    container-type: inline-size;
+    container-name: wordflow-widget-current-note-text-container;
+}
+
+.wordflow-widget-current-note-label {
+    font-weight: bold;
+    color: var(--text-normal);
+    margin-right: 16px;
+
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wordflow-widget-current-note-faint-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-faint);
+
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wordflow-widget-current-note-value {
+    font-weight: bold;
+    color: var(--text-accent);
+
+    display: flex;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* 当容器宽度小于300px时 */
+@container wordflow-widget-current-note-text-container (max-width: 200px) {
+    .wordflow-widget-current-note-label,
+    .wordflow-widget-current-note-faint-label,
+    .wordflow-widget-current-note-value {
+        font-size: 16px;
+    }
+}
+
+/* 当容器宽度小于200px时 */
+@container wordflow-widget-current-note-text-container (max-width: 160px) {
+    .wordflow-widget-current-note-label,
+    .wordflow-widget-current-note-faint-label,
+    .wordflow-widget-current-note-value {
+        font-size: 14px;
+    }
+}
+
+.wordflow-widget-current-note-bar-container {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--background-modifier-hover); /* Background for empty part of bar */
+    margin-top: 5px;
+    width: initial;
+    transition: width 1000ms ease-in-out; /*must be much slower than exsting and current bar transition for technique issues*/
+    will-change: width;
+}
+
+.wordflow-widget-current-note-bar-existing {
+    height: 100%;
+    background-color: var(--tab-text-color); /* Example color for existing data */
+    width: initial;
+    transition: width 200ms ease-in-out;
+    will-change: width;
+}
+
+.wordflow-widget-current-note-bar-current {
+    height: 100%;
+    width: initial;
+    transition: width 200ms ease-in-out;
+    will-change: width;
+}
+
+.wordflow-widget-current-note-buttons {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0; /* Buttons never shrink */
+    min-width: fit-content; /* Ensure buttons maintain minimum size */
+}
+
+.wordflow-widget-button {
+    display: flex;
+    position: static;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 50%; /* Changed to 50% for circular shape */
+    background-color: var(--background-secondary);
+    cursor: pointer;
+    width: 40px; /* Ensure consistent circular shape */
+    height: 40px; /* Ensure consistent circular shape */
+    flex-shrink: 0; /* Individual buttons never shrink */
+}
+
+.wordflow-widget-button:hover {
+    background-color: var(--background-modifier-hover);
+}
+
+/* Title row container - holds title and view switcher side by side */
+.wordflow-widget-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.wordflow-widget-title-container {
+    display: inline-block;
+    width: fit-content;
+    max-width: 80%;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.wordflow-widget-title-container .recorder-dropdown-container {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.wordflow-widget-title-container .recorder-dropdown-container select.dropdown {
+    background-image: none;
+    background-blend-mode: normal;
+    background-color: unset;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding-left: 0px;
+    padding-right: 4px;
+    font-size: var(--h2-size);
+    font-weight: var(--h2-weight);
+    line-height: var(--h2-line-height);
+    flex-shrink: 1;
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--h2-color);
+}
+
+.wordflow-widget-title-container .recorder-dropdown-container .wordflow-dynamic-dropdown-container {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.wordflow-widget-title-container .recorder-dropdown-container .wordflow-dynamic-dropdown-button {
+    background-image: none;
+    background-blend-mode: normal;
+    background-color: unset;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    padding-left: 0px;
+    padding-right: 4px;
+    margin: 0;
+    font-size: var(--h2-size);
+    font-weight: var(--h2-weight);
+    line-height: var(--h2-line-height);
+    color: var(--h2-color);
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+.wordflow-widget-title-container .recorder-dropdown-container select.dropdown:hover {
+    cursor: pointer;
+    background-color: hsla(var(--interactive-hover),0.2);
+}
+
+.wordflow-widget-title-container .recorder-dropdown-container .wordflow-dynamic-dropdown-button:hover {
+    cursor: pointer;
+    background-color: hsla(var(--interactive-hover),0.2);
+}
+
+/* View switcher styles */
+.wordflow-widget-view-switcher {
+    display: flex;
+    background-color: transparent;
+    padding: 0;
+    gap: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.wordflow-widget-view-switcher .view-switch-btn {
+    background: none;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    margin: 0;
+    position: relative;
+}
+
+.wordflow-widget-view-switcher .view-switch-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.wordflow-widget-view-switcher .view-switch-btn:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.wordflow-widget-view-switcher .view-switch-btn:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Handle last visible button when heatmap is hidden */
+.wordflow-widget-view-switcher .view-switch-btn.last-visible {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.wordflow-widget-view-switcher .view-switch-btn:hover {
+    background-color: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.wordflow-widget-view-switcher .view-switch-btn.active {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    font-weight: 600;
+}
+
+.wordflow-widget-control-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.wordflow-widget-control-container *> select.dropdown:hover {
+    cursor: pointer;
+    background-color: hsla(var(--interactive-hover),0.2);
+    color: var(--text-accent-hover);
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 1;
+    min-width: 0;
+    position: relative; /* 作为绝对定位的参考点 */
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container .wordflow-widget-nav-button {
+    border: none;
+    cursor: pointer;
+    padding: 4px 0px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    outline: none;
+    box-shadow: none;
+    font-size: 16px;
+    line-height: 1;
+    position: absolute; /* 绝对定位，脱离文档流 */
+    opacity: 0; /* 默认隐藏 */
+    transition: opacity 0.2s ease, color 0.2s ease; /* 平滑过渡 */
+    pointer-events: none; /* 隐藏时不响应鼠标事件 */
+    z-index: 10; /* 确保在文字上方 */
+    background: var(--background-secondary);
+    border-radius: 0%;
+    backdrop-filter: blur(16px);
+}
+
+/* 前一个按钮：右边界对齐容器左边界 */
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container .wordflow-widget-nav-button[aria-label="previous"] {
+    right: calc(100% - 2px);
+}
+
+/* 下一个按钮：左边界对齐容器右边界 */
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container .wordflow-widget-nav-button[aria-label="next"] {
+    left: calc(100% - 2px);
+    padding-right: 4px;
+}
+
+/* 回到现在按钮：紧跟在 next 按钮右边 */
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container .wordflow-widget-nav-button[aria-label="back to present"] {
+    left: calc(100% + 12px); 
+}
+
+/* 悬浮时显示按钮 */
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container:hover .wordflow-widget-nav-button {
+    opacity: 1;
+    pointer-events: auto; /* 显示时响应鼠标事件 */
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container .wordflow-widget-nav-button svg {
+    width: auto;
+    height: 18px;
+    display: block;
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container .wordflow-widget-nav-button:hover {
+    color: var(--text-normal);
+    background-color: hsla(var(--interactive-hover), 0.3); /* 添加背景色以提高可见性 */
+    border-radius: 4px;
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container .wordflow-widget-nav-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container .periodic-note-name-container {
+    background-image: none;
+    background-blend-mode: normal;
+    background-color: unset;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 20px;
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text-accent);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-leftgroup-container .periodic-note-name-container:hover {
+    background-color: hsla(var(--interactive-hover),0.2);
+    color: var(--text-accent-hover);
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-rightgroup-container {
+    flex-shrink: 0; 
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 350;
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-rightgroup-container *> select.dropdown {
+    background-image: none;
+    background-blend-mode: normal;
+    background-color: unset;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding-left: 4px;
+    padding-right: 0px;
+    font-size: 20px;
+
+    font-weight: 350;
+    display: flex;
+    text-align: right;
+}
+
+.wordflow-widget-control-container .wordflow-widget-control-rightgroup-container .totalDataContainer {
+    margin-left: 8px;
+    min-width: max-content;
+}
+
+.wordflow-widget-no-data-message {
+    display: block;
+    margin-top: 12px;
+    color: var(--text-faint);
+}
+
+.wordflow-widget-progress-bar-container {
+    width: 100%; /* Make the progress bar take full width */
+    height: 8px; /* Adjust height as needed */
+    background-color: var(--background-modifier-hover); /* Background for empty part of bar */
+    margin-bottom: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.wordflow-widget-total-progress-bar-container {
+    height: 20px;
+    background-color: var(--background-modifier-hover);
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Dual-layer progress bar styles */
+.wordflow-widget-dual-layer-container {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: var(--background-modifier-hover);
+}
+
+.wordflow-widget-tag-layer-container {
+    height: 16px; /* 80% of 20px total height */
+    display: flex;
+    width: 100%;
+    background-color: var(--background-modifier-hover);
+}
+
+.wordflow-widget-file-layer-container {
+    height: 4px; /* 20% of 20px total height */
+    display: flex;
+    width: 100%;
+    background-color: var(--background-modifier-hover);
+}
+
+.wordflow-widget-tag-segment {
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.2s ease, filter 0.2s ease, transform 0.1s ease;
+}
+
+.wordflow-widget-tag-segment:hover {
+    opacity: 0.8;
+}
+
+.wordflow-widget-file-segment {
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.wordflow-widget-file-segment:hover {
+    opacity: 0.8;
+}
+/*
+.wordflow-widget-progress-bar {
+    height: 100%;
+    border-radius: 4px;
+}
+*/
+.wordflow-widget-progress-bar-segment {
+    float: left;
+    height: 100%;
+}
+
+.wordflow-widget-data-row {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.wordflow-widget-data-row-circle {
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 50%;
+    margin-right: 8px; 
+    flex-shrink: 0;
+}
+
+.wordflow-widget-data-row-file-path {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    min-width: 0;
+    color: var(--nav-item-color);
+}
+
+.wordflow-widget-data-row-file-path:hover {
+    cursor: pointer;
+    background-color: hsla(var(--interactive-hover),0.2);
+    color: var(--text-accent-hover);
+}
+
+.wordflow-widget-data-row-value {
+    margin-left: 8px;
+    font-weight: 400;
+    flex-shrink: 0;
+}
+
+/* ======================== */
+/*  Tag Group List Styles   */
+/* ======================== */
+
+/* Tag group list container */
+.wordflow-widget-tag-list-container {
+    margin-top: 8px;
+}
+
+/* First level: Tag group rows */
+.wordflow-widget-tag-group-row {
+    display: flex;
+    align-items: center;
+    margin: 0 0 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.wordflow-widget-tag-group-row:hover .wordflow-widget-tag-group-arrow {
+    /* Highlight arrow on hover only */
+    color: var(--text-accent);
+}
+
+/* Tag group color dot (HSL pure color) */
+.wordflow-widget-tag-group-color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+/* Tag group name */
+.wordflow-widget-tag-group-name {
+    flex-grow: 1;
+    color: var(--nav-item-color);
+    font-weight: bold;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* Remove transition - no hover effect for text */
+}
+
+/* Tag group arrow indicator */
+.wordflow-widget-tag-group-arrow {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-left: 8px;
+    transition: color 0.2s ease, transform 0.2s ease;
+    user-select: none;
+}
+
+/* Unconfigured group specific styling */
+.wordflow-widget-unconfigured-group .wordflow-widget-tag-group-name {
+    color: var(--text-muted);
+}
+
+/* Second level: File list containers */
+.wordflow-widget-tag-files-container {
+    position: relative;
+    margin-left: 5.5px; /* Align with center of tag group color dot, compensating for 1px line width */
+    padding-left: 20px; /* Space for vertical line and indentation */
+    margin-bottom: 8px;
+}
+
+/* Vertical guide line - positioned to align with tag group dot center */
+.wordflow-widget-tag-files-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -4px; /* 向上延伸8px */
+    bottom: -4px; /* 向下延伸8px */
+    width: 1px;
+    background-color: var(--background-modifier-border);
+}
+
+/* File rows within tag groups - reuse original styling with modifications */
+.wordflow-widget-tag-group-file-row {
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wordflow-widget-tag-group-file-row .wordflow-widget-data-row-circle {
+    width: 8px;
+    height: 8px;
+    margin-right: 0; /* Remove margin since we use gap */
+    flex-shrink: 0;
+}
+
+.wordflow-widget-tag-group-file-row .wordflow-widget-data-row-file-path {
+    flex-shrink: 1; /* Allow filename to shrink when necessary */
+    min-width: 0; /* Allow text truncation if absolutely necessary */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 0; /* Remove margin since we use gap */
+}
+
+.wordflow-widget-tag-group-file-row .wordflow-widget-data-row-value {
+    flex-shrink: 0; /* Value never shrinks */
+    margin-left: 0; /* Remove margin since we use gap */
+    order: 3; /* Always last */
+}
+
+/* Middle container for tags - positioned between filename and value */
+.wordflow-widget-middle-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end; /* Align tags to the right */
+    min-width: 0; /* Allow container to shrink */
+    order: 2;
+    overflow: hidden; /* Hide overflowing content */
+}
+
+/* Source tags container - updated positioning */
+.wordflow-widget-source-tags-container {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 1; /* Allow tags container to shrink first */
+    min-width: 0; /* Allow container to shrink */
+    overflow-x: auto; /* Allow horizontal scrolling for tags */
+    overflow-y: hidden; /* Hide vertical overflow */
+    scrollbar-width: none; /* Firefox: hide scrollbar */
+    -ms-overflow-style: none; /* IE/Edge: hide scrollbar */
+}
+
+/* Hide scrollbar for WebKit browsers */
+.wordflow-widget-source-tags-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Source tag pills (Obsidian native tag style, desaturated) */
+.wordflow-widget-source-tag-pill {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 11px;
+    line-height: 1.4;
+    background-color: var(--background-modifier-border);
+    color: var(--text-muted);
+    border: 1px solid var(--background-modifier-border);
+    white-space: nowrap;
+    flex-shrink: 0; /* Individual tags don't shrink */
+}
+
+/* Responsive adjustments for current note section */
+@media (max-width: 300px) {
+    .wordflow-widget-current-note-data {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .wordflow-widget-current-note-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .wordflow-widget-current-note-left-content-wrapper {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+    
+    .wordflow-widget-current-note-buttons {
+        justify-content: center;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .wordflow-widget-tag-files-container {
+        margin-left: 4px;
+        padding-left: 12px;
+    }
+    
+    .wordflow-widget-source-tags-container {
+        display: none; /* Hide source tags on very small screens */
+    }
+}
+
+/* ======================== */
+/*  Heatmap View Styles     */
+/* ======================== */
+
+.wordflow-widget-heatmap-container {
+    margin-top: 8px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Month labels */
+.wordflow-heatmap-month-labels {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* Default, will be overridden by inline style */
+    gap: 3px;
+    padding-left: 32px; /* Align with cells (weekday label width) */
+}
+
+.wordflow-heatmap-month-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* Main grid container */
+.wordflow-heatmap-grid-container {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Weekday labels + cells */
+    gap: 8px;
+    align-items: start;
+}
+
+/* Weekday labels */
+.wordflow-heatmap-weekday-labels {
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    gap: 3px;
+    height: 100%; /* Match the height of cells container */
+}
+
+.wordflow-heatmap-weekday-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Heatmap cells grid */
+.wordflow-heatmap-cells {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* Default, will be overridden by inline style */
+    grid-auto-rows: 1fr; /* Make rows equal height */
+    gap: 3px;
+    /* aspect-ratio is set dynamically in TypeScript based on heatmapWeeksToShow setting */
+}
+
+.wordflow-heatmap-cell {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Keep cells square */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.wordflow-heatmap-cell:hover {
+    border-color: var(--text-accent);
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+/* Future dates styling */
+.wordflow-heatmap-future {
+    background-color: transparent;
+    border-color: var(--background-modifier-border-hover);
+    cursor: default;
+    opacity: 0.3;
+}
+
+.wordflow-heatmap-future:hover {
+    transform: none;
+    border-color: var(--background-modifier-border-hover);
+}
+
+/* Today's date highlighting - Purple border */
+.wordflow-heatmap-today {
+    outline: 2px solid var(--text-accent);
+    outline-offset: -1px;
+    border-radius: 4px;
+}
+
+.wordflow-heatmap-today:hover {
+    outline: 2px solid var(--text-accent);
+    outline-offset: -1px;
+}
+
+/* Selected date highlighting - Dashed border */
+.wordflow-heatmap-selected {
+    outline: 2px dashed var(--text-accent);
+    outline-offset: -1px;
+    border-radius: 4px;
+}
+
+.wordflow-heatmap-selected:hover {
+    outline: 2px dashed var(--text-accent);
+    outline-offset: -1px;
+}
+
+/* Heatmap legend */
+.wordflow-heatmap-legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 8px;
+    padding-right: 0px;
+}
+
+.wordflow-heatmap-legend-label {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.wordflow-heatmap-legend-cell {
+    /* Width will be set dynamically via inline style to match heatmap cells */
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+    border: 1px solid var(--background-modifier-border);
+}
+
+/* Responsive adjustments for heatmap */
+@media (max-width: 400px) {
+    .wordflow-heatmap-cells {
+        grid-template-columns: repeat(8, 1fr); /* Show fewer weeks on small screens */
+    }
+    
+    .wordflow-heatmap-month-labels {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+/* =========================================== */
+/*  AI Tab Styles                             */
+/* =========================================== */
+
+.wordflow-eye-button {
+    margin-left: 8px;
+    padding: 0 8px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    background: var(--background-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wordflow-eye-button:hover {
+    background: var(--background-modifier-hover);
+    border-color: var(--background-modifier-hover);
+}
+
+/* ======================== */
+/*  Reference Tab Styles    */
+/* ======================== */
+
+.wordflow-reference-container {
+    user-select: text ;
+    -webkit-user-select: text ;
+    -moz-user-select: text ;
+    -ms-user-select: text ;
+    overflow-x: auto ;
+    overflow-y: visible;
+    width: 100%;
+    max-width: 100%;
+    padding: 0px 16px;
+}
+
+.wordflow-reference-container h4{
+    padding: 0px 0px;
+}
+
+/* 表格水平滚动样式 */
+.wordflow-reference-container table {
+    width: max-content ;
+    table-layout: auto ;
+    border-collapse: collapse;
+    margin: 16px 0;
+}
+
+/* 表格单元格样式优化 */
+.wordflow-reference-container th,
+.wordflow-reference-container td {
+    padding: 8px 12px ;
+    border: 1px solid var(--background-modifier-border) ;
+    vertical-align: top ;
+    word-wrap: break-word;
+    max-width: none ;
+    white-space: nowrap;
+}
+
+/* 特定列的宽度控制 */
+.wordflow-reference-container th:nth-child(1),
+.wordflow-reference-container td:nth-child(1) {
+    min-width: 180px;
+    white-space: nowrap;
+    font-family: var(--font-monospace);
+    font-weight: bold;
+}
+
+.wordflow-reference-container th:nth-child(2),
+.wordflow-reference-container td:nth-child(2) {
+    min-width: 300px;
+    max-width: 400px;
+    white-space: normal;
+}
+
+.wordflow-reference-container th:nth-child(3),
+.wordflow-reference-container td:nth-child(3) {
+    min-width: 150px;
+    white-space: nowrap;
+}
+
+.wordflow-reference-container th:nth-child(4),
+.wordflow-reference-container td:nth-child(4) {
+    min-width: 200px;
+    white-space: nowrap;
+    font-family: var(--font-monospace);
+}
+
+.wordflow-reference-container th:nth-child(5),
+.wordflow-reference-container td:nth-child(5) {
+    min-width: 300px;
+    max-width: 500px;
+    white-space: normal;
+}
+
+
+/* ==================== */
+/*  Confirmation Modal  */
+/* ==================== */
+
+.wordflow-confirm-modal .modal {
+    width: auto;
+    max-width: 80vw;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
+.wordflow-confirm-modal .confirm-message ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.wordflow-confirm-modal .confirm-message ul ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.wordflow-confirm-modal .confirm-cancel-buttons button {
+    flex: 1;
+    max-width: 48%;
+}
+
+.wordflow-confirm-modal .confirm-cancel-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 20px;
+    width: 100%;
+    gap: 16px;
+    flex-direction: row-reverse;
+}
+
+/* ================== */
+/*  Text Input Modal  */
+/* ================== */
+
+.wordflow-text-input-container {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.wordflow-text-input-container input {
+    width: 100%;
+}
+
+.wordflow-text-input-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 1rem;
+}
+
+/* ============================== */
+/*  Syntax Change Confirmation Modal  */
+/* ============================== */
+
+.wordflow-syntax-change-modal .modal {
+    width: 60vw;
+    max-width: 1200px;
+    min-width: 800px;
+}
+
+.wordflow-syntax-change-modal .syntax-change-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.wordflow-syntax-change-modal .syntax-change-buttons button {
+    flex: 1;
+    max-width: 48%;
+}
+
+/* ============================= */
+/*  Customized setting displays  */
+/* ============================= */
+
+.wordflow-setting-tab .wordflow-multiline-setting {
+    display: block;
+}
+
+.wordflow-setting-tab .wordflow-info {
+    margin-right: 0;
+    margin-bottom: 8px;
+}
+
+.wordflow-setting-tab .wordflow-textarea {
+    min-width: -webkit-fill-available;
+    height: 80px;
+}
+
+
+/* ========================== */
+/*  Dynamic Dropdown Component */
+/* ========================== */
+
+.wordflow-dynamic-dropdown-container {
+    display: inline-block;
+}
+
+.wordflow-dynamic-dropdown-container .wordflow-dynamic-dropdown-button {
+    display: inline;
+    padding: 0;
+    background: none;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: var(--text-normal);
+    font-size: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.wordflow-dynamic-dropdown-container .wordflow-dynamic-dropdown-button::after {
+    display: none;
+}
+
+.wordflow-dynamic-dropdown-container .wordflow-dynamic-dropdown-button:hover:not(.is-disabled),
+.wordflow-dynamic-dropdown-container .wordflow-dynamic-dropdown-button:focus,
+.wordflow-dynamic-dropdown-container .wordflow-dynamic-dropdown-button:active {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.wordflow-dynamic-dropdown-container .wordflow-dynamic-dropdown-button.is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.menu.wordflow-dynamic-dropdown-menu-right-aligned .menu-item {
+    flex-direction: row-reverse;
+}
+
+.menu.wordflow-dynamic-dropdown-menu-right-aligned .menu-item-title {
+    text-align: right;
+    flex: 1;
+}
+
+
+/* =========================================== */
+/*  Html Elements displaying in periodic notes */
+/* =========================================== */
+
+.edited-percentage::after {
+    content: attr(data-percentage) "%";
+}
+
+.stat-bar-container {
+    display: inline-flex;
+    width: 160px;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+  
+.stat-bar {
+    height: 100%;
+}
+  
+.stat-bar.origin {
+    background-color: #FFD700;
+    border-radius: 6px 0 0 6px;
+}
+  
+.stat-bar.deleted {
+    background-color: #FF4D4D;
+}
+  
+.stat-bar.added {
+    background-color: #00CC66;
+    border-radius: 0 6px 6px 0;
+}
+
+.wf-diff-loading {
+    display: inline-block;
+    animation: wf-spin 1s linear infinite;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+
+@keyframes wf-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
