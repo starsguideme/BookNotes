@@ -3,18 +3,18 @@
 
 主线程先要创建 `Runnable` 和 `Callable` 接口的任务对象。工具类中的 `Executors` 可以把 `Runnable` 对象封装成一个 `Callable` 对象：
 
-| 方法 | 说明 |
-|------|------|
-| ==**`Executors.callable(Runnable task)`**== | 将 `Runnable` 封装成 `Callable`，没有返回值 |
+| 方法                                                         | 说明                                              |
+| ---------------------------------------------------------- | ----------------------------------------------- |
+| ==**`Executors.callable(Runnable task)`**==                | 将 `Runnable` 封装成 `Callable`，没有返回值               |
 | ==**`Executors.callable(Runnable task, Object result)`**== | 将 `Runnable` 封装成 `Callable`，执行完成后返回指定的 `result` |
 
 ### 二、任务提交到线程池
 
 把任务对象提交给 `ExecutorService` 执行有两种方式：
 
-| 方式 | 方法 | 说明 |
-|------|------|------|
-| ==**直接执行**== | `execute(Runnable command)` | 无返回值，无法感知任务执行结果 |
+| 方式           | 方法                                                   | 说明                                |
+| ------------ | ---------------------------------------------------- | --------------------------------- |
+| ==**直接执行**== | `execute(Runnable command)`                          | 无返回值，无法感知任务执行结果                   |
 | ==**提交执行**== | `submit(Runnable task)` 或 `submit(Callable<T> task)` | 返回 `Future<T>`，可以通过 `get()` 获取返回值 |
 
 ### 三、FutureTask 的使用

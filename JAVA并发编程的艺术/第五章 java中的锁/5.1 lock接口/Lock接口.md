@@ -42,7 +42,7 @@
 | ==**`void unlock()`**== | 释放锁，必须在 `finally` 块中调用以确保锁被释放 |
 | ==**`Condition newCondition()`**== | 返回一个绑定到此 Lock 的 Condition 实例，用于线程间的等待/通知 |
 
-以上 API 的实现均是由于 Lock 接口中的 **[[AQS的定义与特点]]（AbstractQueuedSynchronizer）** 的子类来完成线程控制访问的。AQS 是 Lock 接口的底层实现框架，通过 `volatile int state` + CAS + CLH 同步队列来管理锁的获取和释放。
+以上 API 的实现均是由于 Lock 接口中的 **[[AQS]]（AbstractQueuedSynchronizer）** 的子类来完成线程控制访问的。AQS 是 Lock 接口的底层实现框架，通过 `volatile int state` + CAS + CLH 同步队列来管理锁的获取和释放。
 
 ### 五、Lock 的使用模板
 
